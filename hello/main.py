@@ -1,3 +1,6 @@
+import findspark
+findspark.init()
+
 from pyspark.sql import SparkSession
 import sentry_sdk
 from sentry_sdk.integrations.spark import SparkIntegration

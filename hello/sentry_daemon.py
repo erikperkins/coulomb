@@ -1,3 +1,6 @@
+import findspark
+findspark.init()
+
 import sentry_sdk
 from sentry_sdk.integrations.spark import SparkWorkerIntegration
 import pyspark.daemon as orginal_daemon
