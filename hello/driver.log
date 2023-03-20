@@ -1,0 +1,623 @@
+++ id -u
++ myuid=0
+++ id -g
++ mygid=0
++ set +e
+++ getent passwd 0
++ uidentry=root:x:0:0:root:/root:/bin/bash
++ set -e
++ '[' -z root:x:0:0:root:/root:/bin/bash ']'
++ '[' -z /usr/local/openjdk-11 ']'
++ SPARK_CLASSPATH=':/opt/spark/jars/*'
++ env
++ sed 's/[^=]*=\(.*\)/\1/g'
++ grep SPARK_JAVA_OPT_
++ sort -t_ -k4 -n
++ readarray -t SPARK_EXECUTOR_JAVA_OPTS
++ '[' -n '' ']'
++ '[' -z ']'
++ '[' -z ']'
++ '[' -n '' ']'
++ '[' -z ']'
++ '[' -z x ']'
++ SPARK_CLASSPATH='/opt/spark/conf::/opt/spark/jars/*'
++ case "$1" in
++ shift 1
++ CMD=("$SPARK_HOME/bin/spark-submit" --conf "spark.driver.bindAddress=$SPARK_DRIVER_BIND_ADDRESS" --deploy-mode client "$@")
++ exec /usr/bin/tini -s -- /opt/spark/bin/spark-submit --conf spark.driver.bindAddress=10.0.4.75 --deploy-mode client --properties-file /opt/spark/conf/spark.properties --class org.apache.spark.deploy.PythonRunner local:///app/main.py
+23/03/20 01:42:44 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+23/03/20 01:42:45 INFO SparkContext: Running Spark version 3.3.2
+23/03/20 01:42:45 INFO ResourceUtils: ==============================================================
+23/03/20 01:42:45 INFO ResourceUtils: No custom resources configured for spark.driver.
+23/03/20 01:42:45 INFO ResourceUtils: ==============================================================
+23/03/20 01:42:45 INFO SparkContext: Submitted application: hello
+23/03/20 01:42:45 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 512, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+23/03/20 01:42:45 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+23/03/20 01:42:45 INFO ResourceProfileManager: Added ResourceProfile id: 0
+23/03/20 01:42:46 INFO SecurityManager: Changing view acls to: root
+23/03/20 01:42:46 INFO SecurityManager: Changing modify acls to: root
+23/03/20 01:42:46 INFO SecurityManager: Changing view acls groups to: 
+23/03/20 01:42:46 INFO SecurityManager: Changing modify acls groups to: 
+23/03/20 01:42:46 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+23/03/20 01:42:46 INFO Utils: Successfully started service 'sparkDriver' on port 7078.
+23/03/20 01:42:46 INFO SparkEnv: Registering MapOutputTracker
+23/03/20 01:42:47 INFO SparkEnv: Registering BlockManagerMaster
+23/03/20 01:42:47 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+23/03/20 01:42:47 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+23/03/20 01:42:47 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+23/03/20 01:42:47 INFO DiskBlockManager: Created local directory at /var/data/spark-d438491b-76b0-4886-9c19-5f0f8217bd24/blockmgr-4b782489-34ff-49b2-b423-51c74dce9262
+23/03/20 01:42:47 INFO MemoryStore: MemoryStore started with capacity 117.0 MiB
+23/03/20 01:42:47 INFO SparkEnv: Registering OutputCommitCoordinator
+23/03/20 01:42:48 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+23/03/20 01:42:48 INFO SparkContext: Added JAR file:/tmp/spark-181a9742-b7e7-45ef-b6e4-f7a99236389b/hadoop-aws-3.3.4.jar at spark://hello-c01dd486fcae4f75-driver-svc.spark.svc:7078/jars/hadoop-aws-3.3.4.jar with timestamp 1679276565766
+23/03/20 01:42:48 INFO SparkContext: Added JAR file:/tmp/spark-181a9742-b7e7-45ef-b6e4-f7a99236389b/aws-java-sdk-bundle-1.12.262.jar at spark://hello-c01dd486fcae4f75-driver-svc.spark.svc:7078/jars/aws-java-sdk-bundle-1.12.262.jar with timestamp 1679276565766
+23/03/20 01:42:48 WARN SparkContext: File with 'local' scheme local:///app/sentry_daemon.py is not supported to add to file server, since it is already available on every node.
+23/03/20 01:42:48 INFO SparkKubernetesClientFactory: Auto-configuring K8S client using current context from users K8S config file
+23/03/20 01:42:50 INFO ExecutorPodsAllocator: Going to request 2 executors from Kubernetes for ResourceProfile Id: 0, target: 2, known: 0, sharedSlotFromPendingPods: 2147483647.
+23/03/20 01:42:50 INFO BasicExecutorFeatureStep: Decommissioning not enabled, skipping shutdown script
+23/03/20 01:42:51 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 7079.
+23/03/20 01:42:51 INFO NettyBlockTransferService: Server created on hello-c01dd486fcae4f75-driver-svc.spark.svc:7079
+23/03/20 01:42:51 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+23/03/20 01:42:51 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, hello-c01dd486fcae4f75-driver-svc.spark.svc, 7079, None)
+23/03/20 01:42:51 INFO BlockManagerMasterEndpoint: Registering block manager hello-c01dd486fcae4f75-driver-svc.spark.svc:7079 with 117.0 MiB RAM, BlockManagerId(driver, hello-c01dd486fcae4f75-driver-svc.spark.svc, 7079, None)
+23/03/20 01:42:51 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, hello-c01dd486fcae4f75-driver-svc.spark.svc, 7079, None)
+23/03/20 01:42:51 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, hello-c01dd486fcae4f75-driver-svc.spark.svc, 7079, None)
+23/03/20 01:42:51 INFO BasicExecutorFeatureStep: Decommissioning not enabled, skipping shutdown script
+23/03/20 01:43:20 INFO KubernetesClusterSchedulerBackend: SchedulerBackend is ready for scheduling beginning after waiting maxRegisteredResourcesWaitingTime: 30000000000(ns)
+23/03/20 01:43:21 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+23/03/20 01:43:21 INFO SharedState: Warehouse path is 'file:/app/spark-warehouse'.
+23/03/20 01:43:24 WARN MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+23/03/20 01:43:24 INFO MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+23/03/20 01:43:24 INFO MetricsSystemImpl: s3a-file-system metrics system started
+23/03/20 01:43:26 INFO KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.0.4.70:60250) with ID 2,  ResourceProfileId 0
+23/03/20 01:43:26 INFO InMemoryFileIndex: It took 223 ms to list leaf files for 1 paths.
+23/03/20 01:43:26 INFO InMemoryFileIndex: It took 16 ms to list leaf files for 1 paths.
+23/03/20 01:43:26 INFO BlockManagerMasterEndpoint: Registering block manager 10.0.4.70:34341 with 117.0 MiB RAM, BlockManagerId(2, 10.0.4.70, 34341, None)
+23/03/20 01:43:30 INFO KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.0.4.215:53922) with ID 1,  ResourceProfileId 0
+23/03/20 01:43:30 INFO BlockManagerMasterEndpoint: Registering block manager 10.0.4.215:37477 with 117.0 MiB RAM, BlockManagerId(1, 10.0.4.215, 37477, None)
+23/03/20 01:43:32 INFO FileSourceStrategy: Pushed Filters: 
+23/03/20 01:43:32 INFO FileSourceStrategy: Post-Scan Filters: 
+23/03/20 01:43:32 INFO FileSourceStrategy: Output Data Schema: struct<value: string>
+23/03/20 01:43:32 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 214.3 KiB, free 116.8 MiB)
+23/03/20 01:43:33 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 36.2 KiB, free 116.7 MiB)
+23/03/20 01:43:33 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on hello-c01dd486fcae4f75-driver-svc.spark.svc:7079 (size: 36.2 KiB, free: 116.9 MiB)
+23/03/20 01:43:33 INFO SparkContext: Created broadcast 0 from json at <unknown>:0
+23/03/20 01:43:33 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+23/03/20 01:43:33 INFO SparkContext: Starting job: json at <unknown>:0
+23/03/20 01:43:33 INFO DAGScheduler: Got job 0 (json at <unknown>:0) with 1 output partitions
+23/03/20 01:43:33 INFO DAGScheduler: Final stage: ResultStage 0 (json at <unknown>:0)
+23/03/20 01:43:33 INFO DAGScheduler: Parents of final stage: List()
+23/03/20 01:43:33 INFO DAGScheduler: Missing parents: List()
+23/03/20 01:43:33 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[3] at json at <unknown>:0), which has no missing parents
+23/03/20 01:43:33 ERROR AsyncEventQueue: Listener Proxy38 threw an exception
+py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "/usr/local/lib/python3.9/dist-packages/sentry_sdk/integrations/spark/spark_driver.py", line 241, in onStageSubmitted
+    data = {"attemptId": stage_info.attemptId(), "name": stage_info.name()}
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/spark/python/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/protocol.py", line 330, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o85.attemptId. Trace:
+py4j.Py4JException: Method attemptId([]) does not exist
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:318)
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:326)
+	at py4j.Gateway.invoke(Gateway.java:274)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.sendCommand(ClientServerConnection.java:244)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:384)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:356)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:106)
+	at com.sun.proxy.$Proxy38.onStageSubmitted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:33)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+
+
+
+	at py4j.Protocol.getReturnValue(Protocol.java:476)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+	at com.sun.proxy.$Proxy38.onStageSubmitted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:33)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+23/03/20 01:43:34 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 17.3 KiB, free 116.7 MiB)
+23/03/20 01:43:34 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 8.0 KiB, free 116.7 MiB)
+23/03/20 01:43:34 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on hello-c01dd486fcae4f75-driver-svc.spark.svc:7079 (size: 8.0 KiB, free: 116.9 MiB)
+23/03/20 01:43:34 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1513
+23/03/20 01:43:34 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[3] at json at <unknown>:0) (first 15 tasks are for partitions Vector(0))
+23/03/20 01:43:34 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+23/03/20 01:43:34 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (10.0.4.70, executor 2, partition 0, PROCESS_LOCAL, 7860 bytes) taskResourceAssignments Map()
+23/03/20 01:43:35 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.0.4.70:34341 (size: 8.0 KiB, free: 117.0 MiB)
+23/03/20 01:43:41 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.0.4.70:34341 (size: 36.2 KiB, free: 116.9 MiB)
+23/03/20 01:43:49 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 15600 ms on 10.0.4.70 (executor 2) (1/1)
+23/03/20 01:43:49 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+23/03/20 01:43:49 INFO DAGScheduler: ResultStage 0 (json at <unknown>:0) finished in 16.038 s
+23/03/20 01:43:49 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+23/03/20 01:43:49 ERROR AsyncEventQueue: Listener Proxy38 threw an exception
+py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "/usr/local/lib/python3.9/dist-packages/sentry_sdk/integrations/spark/spark_driver.py", line 252, in onStageCompleted
+    data = {"attemptId": stage_info.attemptId(), "name": stage_info.name()}
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/spark/python/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/protocol.py", line 330, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o100.attemptId. Trace:
+py4j.Py4JException: Method attemptId([]) does not exist
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:318)
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:326)
+	at py4j.Gateway.invoke(Gateway.java:274)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.sendCommand(ClientServerConnection.java:244)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:384)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:356)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:106)
+	at com.sun.proxy.$Proxy38.onStageCompleted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:35)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+
+
+
+	at py4j.Protocol.getReturnValue(Protocol.java:476)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+	at com.sun.proxy.$Proxy38.onStageCompleted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:35)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+23/03/20 01:43:49 INFO TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+23/03/20 01:43:49 INFO DAGScheduler: Job 0 finished: json at <unknown>:0, took 16.294645 s
+23/03/20 01:43:50 INFO BlockManagerInfo: Removed broadcast_1_piece0 on hello-c01dd486fcae4f75-driver-svc.spark.svc:7079 in memory (size: 8.0 KiB, free: 116.9 MiB)
+23/03/20 01:43:50 INFO BlockManagerInfo: Removed broadcast_1_piece0 on 10.0.4.70:34341 in memory (size: 8.0 KiB, free: 116.9 MiB)
+23/03/20 01:43:50 INFO BlockManagerInfo: Removed broadcast_0_piece0 on 10.0.4.70:34341 in memory (size: 36.2 KiB, free: 117.0 MiB)
+23/03/20 01:43:50 INFO BlockManagerInfo: Removed broadcast_0_piece0 on hello-c01dd486fcae4f75-driver-svc.spark.svc:7079 in memory (size: 36.2 KiB, free: 117.0 MiB)
+23/03/20 01:43:50 INFO FileSourceStrategy: Pushed Filters: 
+23/03/20 01:43:50 INFO FileSourceStrategy: Post-Scan Filters: 
+23/03/20 01:43:50 INFO FileSourceStrategy: Output Data Schema: struct<amount: bigint>
+23/03/20 01:43:52 INFO CodeGenerator: Code generated in 666.117097 ms
+23/03/20 01:43:52 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 214.2 KiB, free 116.8 MiB)
+23/03/20 01:43:52 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 36.1 KiB, free 116.7 MiB)
+23/03/20 01:43:52 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on hello-c01dd486fcae4f75-driver-svc.spark.svc:7079 (size: 36.1 KiB, free: 116.9 MiB)
+23/03/20 01:43:52 INFO SparkContext: Created broadcast 2 from json at <unknown>:0
+23/03/20 01:43:52 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+23/03/20 01:43:52 INFO DAGScheduler: Registering RDD 7 (json at <unknown>:0) as input to shuffle 0
+23/03/20 01:43:52 INFO DAGScheduler: Got map stage job 1 (json at <unknown>:0) with 1 output partitions
+23/03/20 01:43:52 INFO DAGScheduler: Final stage: ShuffleMapStage 1 (json at <unknown>:0)
+23/03/20 01:43:52 INFO DAGScheduler: Parents of final stage: List()
+23/03/20 01:43:52 INFO DAGScheduler: Missing parents: List()
+23/03/20 01:43:52 INFO DAGScheduler: Submitting ShuffleMapStage 1 (MapPartitionsRDD[7] at json at <unknown>:0), which has no missing parents
+23/03/20 01:43:52 ERROR AsyncEventQueue: Listener Proxy38 threw an exception
+py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "/usr/local/lib/python3.9/dist-packages/sentry_sdk/integrations/spark/spark_driver.py", line 241, in onStageSubmitted
+    data = {"attemptId": stage_info.attemptId(), "name": stage_info.name()}
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/spark/python/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/protocol.py", line 330, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o129.attemptId. Trace:
+py4j.Py4JException: Method attemptId([]) does not exist
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:318)
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:326)
+	at py4j.Gateway.invoke(Gateway.java:274)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.sendCommand(ClientServerConnection.java:244)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:384)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:356)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:106)
+	at com.sun.proxy.$Proxy38.onStageSubmitted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:33)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+
+
+
+	at py4j.Protocol.getReturnValue(Protocol.java:476)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+	at com.sun.proxy.$Proxy38.onStageSubmitted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:33)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+23/03/20 01:43:52 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 17.9 KiB, free 116.7 MiB)
+23/03/20 01:43:52 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 8.6 KiB, free 116.7 MiB)
+23/03/20 01:43:52 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on hello-c01dd486fcae4f75-driver-svc.spark.svc:7079 (size: 8.6 KiB, free: 116.9 MiB)
+23/03/20 01:43:52 INFO SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1513
+23/03/20 01:43:52 INFO DAGScheduler: Submitting 1 missing tasks from ShuffleMapStage 1 (MapPartitionsRDD[7] at json at <unknown>:0) (first 15 tasks are for partitions Vector(0))
+23/03/20 01:43:52 INFO TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+23/03/20 01:43:52 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (10.0.4.70, executor 2, partition 0, PROCESS_LOCAL, 7849 bytes) taskResourceAssignments Map()
+23/03/20 01:43:52 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.0.4.70:34341 (size: 8.6 KiB, free: 117.0 MiB)
+23/03/20 01:43:53 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.0.4.70:34341 (size: 36.1 KiB, free: 116.9 MiB)
+23/03/20 01:43:54 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 1508 ms on 10.0.4.70 (executor 2) (1/1)
+23/03/20 01:43:54 INFO DAGScheduler: ShuffleMapStage 1 (json at <unknown>:0) finished in 1.610 s
+23/03/20 01:43:54 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+23/03/20 01:43:54 INFO DAGScheduler: looking for newly runnable stages
+23/03/20 01:43:54 INFO DAGScheduler: running: HashSet()
+23/03/20 01:43:54 INFO DAGScheduler: waiting: HashSet()
+23/03/20 01:43:54 ERROR AsyncEventQueue: Listener Proxy38 threw an exception
+py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "/usr/local/lib/python3.9/dist-packages/sentry_sdk/integrations/spark/spark_driver.py", line 252, in onStageCompleted
+    data = {"attemptId": stage_info.attemptId(), "name": stage_info.name()}
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/spark/python/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/protocol.py", line 330, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o140.attemptId. Trace:
+py4j.Py4JException: Method attemptId([]) does not exist
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:318)
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:326)
+	at py4j.Gateway.invoke(Gateway.java:274)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.sendCommand(ClientServerConnection.java:244)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:384)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:356)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:106)
+	at com.sun.proxy.$Proxy38.onStageCompleted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:35)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+
+
+
+	at py4j.Protocol.getReturnValue(Protocol.java:476)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+	at com.sun.proxy.$Proxy38.onStageCompleted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:35)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+23/03/20 01:43:54 INFO DAGScheduler: failed: HashSet()
+23/03/20 01:43:54 WARN AbstractS3ACommitterFactory: Using standard FileOutputCommitter to commit work. This is slow and potentially unsafe.
+23/03/20 01:43:54 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/03/20 01:43:54 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/03/20 01:43:54 INFO AbstractS3ACommitterFactory: Using Committer FileOutputCommitter{PathOutputCommitter{context=TaskAttemptContextImpl{JobContextImpl{jobId=job_202303200143548075334050891340894_0000}; taskId=attempt_202303200143548075334050891340894_0000_m_000000_0, status=''}; org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter@4a47f3e8}; outputPath=s3a://results/orders/average, workPath=s3a://results/orders/average/_temporary/0/_temporary/attempt_202303200143548075334050891340894_0000_m_000000_0, algorithmVersion=1, skipCleanup=false, ignoreCleanupFailures=false} for s3a://results/orders/average
+23/03/20 01:43:54 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+23/03/20 01:43:54 INFO CodeGenerator: Code generated in 102.238838 ms
+23/03/20 01:43:54 INFO SparkContext: Starting job: json at <unknown>:0
+23/03/20 01:43:54 INFO DAGScheduler: Got job 2 (json at <unknown>:0) with 1 output partitions
+23/03/20 01:43:54 INFO DAGScheduler: Final stage: ResultStage 3 (json at <unknown>:0)
+23/03/20 01:43:54 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 2)
+23/03/20 01:43:54 INFO DAGScheduler: Missing parents: List()
+23/03/20 01:43:54 INFO DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[9] at json at <unknown>:0), which has no missing parents
+23/03/20 01:43:54 ERROR AsyncEventQueue: Listener Proxy38 threw an exception
+py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "/usr/local/lib/python3.9/dist-packages/sentry_sdk/integrations/spark/spark_driver.py", line 241, in onStageSubmitted
+    data = {"attemptId": stage_info.attemptId(), "name": stage_info.name()}
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/spark/python/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/protocol.py", line 330, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o152.attemptId. Trace:
+py4j.Py4JException: Method attemptId([]) does not exist
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:318)
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:326)
+	at py4j.Gateway.invoke(Gateway.java:274)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.sendCommand(ClientServerConnection.java:244)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:384)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:356)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:106)
+	at com.sun.proxy.$Proxy38.onStageSubmitted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:33)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+
+
+
+	at py4j.Protocol.getReturnValue(Protocol.java:476)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+	at com.sun.proxy.$Proxy38.onStageSubmitted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:33)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+23/03/20 01:43:54 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 221.9 KiB, free 116.5 MiB)
+23/03/20 01:43:54 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 80.2 KiB, free 116.4 MiB)
+23/03/20 01:43:54 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on hello-c01dd486fcae4f75-driver-svc.spark.svc:7079 (size: 80.2 KiB, free: 116.8 MiB)
+23/03/20 01:43:54 INFO SparkContext: Created broadcast 4 from broadcast at DAGScheduler.scala:1513
+23/03/20 01:43:54 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[9] at json at <unknown>:0) (first 15 tasks are for partitions Vector(0))
+23/03/20 01:43:54 INFO TaskSchedulerImpl: Adding task set 3.0 with 1 tasks resource profile 0
+23/03/20 01:43:54 INFO TaskSetManager: Starting task 0.0 in stage 3.0 (TID 2) (10.0.4.70, executor 2, partition 0, NODE_LOCAL, 7418 bytes) taskResourceAssignments Map()
+23/03/20 01:43:54 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on 10.0.4.70:34341 (size: 80.2 KiB, free: 116.8 MiB)
+23/03/20 01:43:55 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 0 to 10.0.4.70:60250
+23/03/20 01:43:58 INFO TaskSetManager: Finished task 0.0 in stage 3.0 (TID 2) in 3925 ms on 10.0.4.70 (executor 2) (1/1)
+23/03/20 01:43:58 INFO TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+23/03/20 01:43:58 INFO DAGScheduler: ResultStage 3 (json at <unknown>:0) finished in 4.071 s
+23/03/20 01:43:58 INFO DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+23/03/20 01:43:58 INFO TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+23/03/20 01:43:58 INFO DAGScheduler: Job 2 finished: json at <unknown>:0, took 4.107662 s
+23/03/20 01:43:58 INFO FileFormatWriter: Start to commit write Job 3182d900-93ca-460b-9abe-8765849fc28e.
+23/03/20 01:43:58 ERROR AsyncEventQueue: Listener Proxy38 threw an exception
+py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/clientserver.py", line 617, in _call_proxy
+    return_value = getattr(self.pool[obj_id], method)(*params)
+  File "/usr/local/lib/python3.9/dist-packages/sentry_sdk/integrations/spark/spark_driver.py", line 252, in onStageCompleted
+    data = {"attemptId": stage_info.attemptId(), "name": stage_info.name()}
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/spark/python/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/protocol.py", line 330, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o163.attemptId. Trace:
+py4j.Py4JException: Method attemptId([]) does not exist
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:318)
+	at py4j.reflection.ReflectionEngine.getMethod(ReflectionEngine.java:326)
+	at py4j.Gateway.invoke(Gateway.java:274)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.sendCommand(ClientServerConnection.java:244)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:384)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:356)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:106)
+	at com.sun.proxy.$Proxy38.onStageCompleted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:35)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+
+
+
+	at py4j.Protocol.getReturnValue(Protocol.java:476)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+	at com.sun.proxy.$Proxy38.onStageCompleted(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:35)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+23/03/20 01:43:59 INFO BlockManagerInfo: Removed broadcast_3_piece0 on 10.0.4.70:34341 in memory (size: 8.6 KiB, free: 116.8 MiB)
+23/03/20 01:43:59 INFO BlockManagerInfo: Removed broadcast_3_piece0 on hello-c01dd486fcae4f75-driver-svc.spark.svc:7079 in memory (size: 8.6 KiB, free: 116.8 MiB)
+23/03/20 01:43:59 INFO BlockManagerInfo: Removed broadcast_4_piece0 on 10.0.4.70:34341 in memory (size: 80.2 KiB, free: 116.9 MiB)
+23/03/20 01:43:59 INFO BlockManagerInfo: Removed broadcast_4_piece0 on hello-c01dd486fcae4f75-driver-svc.spark.svc:7079 in memory (size: 80.2 KiB, free: 116.9 MiB)
+23/03/20 01:43:59 INFO FileFormatWriter: Write Job 3182d900-93ca-460b-9abe-8765849fc28e committed. Elapsed time: 570 ms.
+23/03/20 01:43:59 INFO FileFormatWriter: Finished processing stats for write job 3182d900-93ca-460b-9abe-8765849fc28e.
+23/03/20 01:43:59 ERROR AsyncEventQueue: Listener Proxy38 threw an exception
+py4j.Py4JException: Cannot obtain a new communication channel
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:380)
+	at py4j.CallbackClient.sendCommand(CallbackClient.java:356)
+	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:106)
+	at com.sun.proxy.$Proxy38.onApplicationEnd(Unknown Source)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent(SparkListenerBus.scala:57)
+	at org.apache.spark.scheduler.SparkListenerBus.doPostEvent$(SparkListenerBus.scala:28)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.scheduler.AsyncEventQueue.doPostEvent(AsyncEventQueue.scala:37)
+	at org.apache.spark.util.ListenerBus.postToAll(ListenerBus.scala:117)
+	at org.apache.spark.util.ListenerBus.postToAll$(ListenerBus.scala:101)
+	at org.apache.spark.scheduler.AsyncEventQueue.super$postToAll(AsyncEventQueue.scala:105)
+	at org.apache.spark.scheduler.AsyncEventQueue.$anonfun$dispatch$1(AsyncEventQueue.scala:105)
+	at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.scala:17)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)
+	at org.apache.spark.scheduler.AsyncEventQueue.org$apache$spark$scheduler$AsyncEventQueue$$dispatch(AsyncEventQueue.scala:100)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.$anonfun$run$1(AsyncEventQueue.scala:96)
+	at org.apache.spark.util.Utils$.tryOrStopSparkContext(Utils.scala:1446)
+	at org.apache.spark.scheduler.AsyncEventQueue$$anon$2.run(AsyncEventQueue.scala:96)
+23/03/20 01:43:59 INFO SparkUI: Stopped Spark web UI at http://hello-c01dd486fcae4f75-driver-svc.spark.svc:4040
+23/03/20 01:43:59 INFO KubernetesClusterSchedulerBackend: Shutting down all executors
+23/03/20 01:43:59 INFO KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: Asking each executor to shut down
+23/03/20 01:43:59 WARN ExecutorPodsWatchSnapshotSource: Kubernetes client has been closed.
+23/03/20 01:43:59 ERROR Utils: Uncaught exception in thread main
+io.fabric8.kubernetes.client.KubernetesClientException: Failure executing: GET at: https://kubernetes.default.svc/api/v1/namespaces/spark/services?labelSelector=spark-app-selector%3Dspark-1f934466bc584229b276700b6f20b6a4. Message: Forbidden!Configured service account doesn't have access. Service account may have been revoked. services is forbidden: User "system:serviceaccount:spark:spark-operator" cannot list resource "services" in API group "" in the namespace "spark".
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.requestFailure(OperationSupport.java:682)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.requestFailure(OperationSupport.java:661)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.assertResponseCode(OperationSupport.java:610)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:555)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:518)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:502)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.listRequestHelper(BaseOperation.java:133)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.list(BaseOperation.java:415)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.list(BaseOperation.java:404)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.deleteList(BaseOperation.java:537)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.delete(BaseOperation.java:455)
+	at org.apache.spark.scheduler.cluster.k8s.KubernetesClusterSchedulerBackend.$anonfun$stop$5(KubernetesClusterSchedulerBackend.scala:139)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1484)
+	at org.apache.spark.scheduler.cluster.k8s.KubernetesClusterSchedulerBackend.stop(KubernetesClusterSchedulerBackend.scala:140)
+	at org.apache.spark.scheduler.TaskSchedulerImpl.stop(TaskSchedulerImpl.scala:931)
+	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:2785)
+	at org.apache.spark.SparkContext.$anonfun$stop$11(SparkContext.scala:2105)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1484)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:2105)
+	at org.apache.spark.deploy.SparkSubmit.$anonfun$runMain$13(SparkSubmit.scala:966)
+	at org.apache.spark.deploy.SparkSubmit.$anonfun$runMain$13$adapted(SparkSubmit.scala:966)
+	at scala.Option.foreach(Option.scala:437)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:966)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:180)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:203)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:90)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1046)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1055)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+23/03/20 01:43:59 ERROR Utils: Uncaught exception in thread main
+io.fabric8.kubernetes.client.KubernetesClientException: Failure executing: GET at: https://kubernetes.default.svc/api/v1/namespaces/spark/configmaps?labelSelector=spark-app-selector%3Dspark-1f934466bc584229b276700b6f20b6a4%2Cspark-role%3Dexecutor. Message: Forbidden!Configured service account doesn't have access. Service account may have been revoked. configmaps is forbidden: User "system:serviceaccount:spark:spark-operator" cannot list resource "configmaps" in API group "" in the namespace "spark".
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.requestFailure(OperationSupport.java:682)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.requestFailure(OperationSupport.java:661)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.assertResponseCode(OperationSupport.java:610)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:555)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:518)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:502)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.listRequestHelper(BaseOperation.java:133)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.list(BaseOperation.java:415)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.list(BaseOperation.java:404)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.deleteList(BaseOperation.java:537)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.delete(BaseOperation.java:455)
+	at org.apache.spark.scheduler.cluster.k8s.KubernetesClusterSchedulerBackend.$anonfun$stop$7(KubernetesClusterSchedulerBackend.scala:162)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1484)
+	at org.apache.spark.scheduler.cluster.k8s.KubernetesClusterSchedulerBackend.stop(KubernetesClusterSchedulerBackend.scala:163)
+	at org.apache.spark.scheduler.TaskSchedulerImpl.stop(TaskSchedulerImpl.scala:931)
+	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:2785)
+	at org.apache.spark.SparkContext.$anonfun$stop$11(SparkContext.scala:2105)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1484)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:2105)
+	at org.apache.spark.deploy.SparkSubmit.$anonfun$runMain$13(SparkSubmit.scala:966)
+	at org.apache.spark.deploy.SparkSubmit.$anonfun$runMain$13$adapted(SparkSubmit.scala:966)
+	at scala.Option.foreach(Option.scala:437)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:966)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:180)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:203)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:90)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1046)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1055)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+23/03/20 01:43:59 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+23/03/20 01:43:59 INFO MemoryStore: MemoryStore cleared
+23/03/20 01:43:59 INFO BlockManager: BlockManager stopped
+23/03/20 01:43:59 INFO BlockManagerMaster: BlockManagerMaster stopped
+23/03/20 01:43:59 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+23/03/20 01:43:59 INFO SparkContext: Successfully stopped SparkContext
+23/03/20 01:43:59 INFO ShutdownHookManager: Shutdown hook called
+23/03/20 01:43:59 INFO ShutdownHookManager: Deleting directory /tmp/localPyFiles-498d1715-3be6-499b-8f0b-d4fd9f630e84
+23/03/20 01:43:59 INFO ShutdownHookManager: Deleting directory /var/data/spark-d438491b-76b0-4886-9c19-5f0f8217bd24/spark-206ddccf-810b-40c4-ae5d-12e221be3286
+23/03/20 01:43:59 INFO ShutdownHookManager: Deleting directory /tmp/spark-181a9742-b7e7-45ef-b6e4-f7a99236389b
+23/03/20 01:43:59 INFO ShutdownHookManager: Deleting directory /var/data/spark-d438491b-76b0-4886-9c19-5f0f8217bd24/spark-206ddccf-810b-40c4-ae5d-12e221be3286/pyspark-843614d1-74f7-427f-83fe-1620f7fe0b5e
+23/03/20 01:43:59 INFO MetricsSystemImpl: Stopping s3a-file-system metrics system...
+23/03/20 01:43:59 INFO MetricsSystemImpl: s3a-file-system metrics system stopped.
+23/03/20 01:43:59 INFO MetricsSystemImpl: s3a-file-system metrics system shutdown complete.
