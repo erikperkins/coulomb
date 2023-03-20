@@ -1,2 +1,6 @@
 py4j==0.10.9.5
 pyspark==3.3.2
+certifi==2022.12.7
+findspark==2.0.1
+sentry-sdk==1.17.0
+urllib3==1.26.15

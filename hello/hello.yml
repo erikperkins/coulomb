@@ -7,12 +7,15 @@ spec:
   type: Python
   pythonVersion: '3'
   mode: cluster
-  image: erikperkins/hello:0.0.1
+  image: erikperkins/hello:0.0.2
   imagePullPolicy: Always
   mainApplicationFile: "local:///app/main.py"
   sparkVersion: "3.3.2"
   restartPolicy:
     type: Never
+  sparkConf:
+    "spark.python.use.daemon": "true"
+    "spark.python.daemon.module": "sentry_daemon"
   hadoopConf:
     "fs.s3a.endpoint": "http://minio.minio.svc.cluster.local:9000"
     "fs.s3a.connection.ssl.enabled": "false"
@@ -60,4 +63,5 @@ spec:
     jars:
       - https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.3.4/hadoop-aws-3.3.4.jar
       - https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.12.262/aws-java-sdk-bundle-1.12.262.jar
-
+    pyFiles:
+      - "local:///app/sentry_daemon.py"
