@@ -10,7 +10,7 @@ from sentry_sdk import capture_message
 if __name__ == "__main__":
   sentry_sdk.init(
     dsn = "https://dc3d919ce65c49528e43198448a06fe1@sentry.cauchy.link/4",
-    integrations = [SparkIntegration()],
+    # integrations = [SparkIntegration()],
     traces_sample_rate = 1.0
   )
 
